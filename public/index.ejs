@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TingleDEX</title>
+  <script src="/countdown.js"></script>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <meta property="og:image" content="img/favicon.png" >
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="https://rawgit.com/mfd/f0f081688ec24e60ba9bbd93786af530/raw/6504171fdb99de094057a09817497c7d76f67540/stratos.css" rel="stylesheet" media="all">
+  <!-- Main Stylesheet File -->
+    <link rel="stylesheet2" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Custom made stylesheet -->
+  <link href="css/mod.css" rel="stylesheet">
+  <link href="css/media992px.css" rel="stylesheet">
+  <link href="css/media576px.css" rel="stylesheet">
+  <link href="css/media768px.css" rel="stylesheet">
+
+  <link href="css/media1200px.css" rel="stylesheet">
+  <!-- =======================================================
+    Theme Name: BizPage
+    Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+  <!--==========================
+    LOADER (START)
+  ============================ -->
+
+<div id ="overlay">
+  <div class="wrap-loader">
+    <div class="loader">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="wrap-text">
+        <div class="text"><span>T</span><span>I</span><span>N</span><span>G</span><span>L</span><span>E</span>
+        </div>
+      </div>
+    </div>
+    <div class="loader-text">Tingle</div>
+  </div>
+</div>
+
+  <!--==========================
+    LOADER (END)
+  ============================-->
+
+  <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container-fluid">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="#intro" class="scrollto">TingleDEX</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+
+    <!-- BTC SCRIPT (START) -->
+<script>
+  var w = new WebSocket("wss://api.bitfinex.com/ws");
+
+  w.onopen = function() {
+  w.send(JSON.stringify({
+    "event": "subscribe",
+    "channel": "ticker",
+    "pair":"BTCUSD",
+  }))
+  };
+
+  w.onmessage = function(msg){
+  var response = JSON.parse(msg.data);
+  console.log(response);
+  var hb = response[1];
+  if(hb != "hb"){
+    var dailyChange = parseFloat(response[6]);
+    dailyChange = Number(Math.round(dailyChange*100+'e2')+'e-2')
+    console.log(dailyChange);
+    console.log(response);
+    if(dailyChange<0){
+    document.getElementById("btc1").innerHTML = response[7].toFixed(2);
+    document.getElementById("btc2").innerHTML = dailyChange+"%";
+    document.getElementById("btc2").style.color = "red";
+    document.getElementById("btc1lg").innerHTML = response[7].toFixed(2);
+    document.getElementById("btc2lg").innerHTML = dailyChange+"%";
+    document.getElementById("btc2lg").style.color = "red";
+    document.getElementById("btc1sm").innerHTML = response[7].toFixed(2);
+    document.getElementById("btc2sm").innerHTML = dailyChange+"%";
+    document.getElementById("btc2sm").style.color = "red";
+    }
+    else if(dailyChange>0){
+      document.getElementById("btc1").innerHTML = response[7].toFixed(2);
+      document.getElementById("btc2").innerHTML = dailyChange+"%";
+      document.getElementById("btc2").style.color = "green";
+      document.getElementById("btc1lg").innerHTML = response[7].toFixed(2);
+      document.getElementById("btc2lg").innerHTML = dailyChange+"%";
+      document.getElementById("btc2lg").style.color = "green";
+      document.getElementById("btc1sm").innerHTML = response[7].toFixed(2);
+      document.getElementById("btc2sm").innerHTML = dailyChange+"%";
+      document.getElementById("btc2sm").style.color = "green";
+    }
+    else{
+      document.getElementById("btc1").innerHTML = response[7].toFixed(2);
+      document.getElementById("btc2").innerHTML = dailyChange+"%";
+      document.getElementById("btc1lg").innerHTML = response[7].toFixed(2);
+      document.getElementById("btc2lg").innerHTML = dailyChange+"%";
+      document.getElementById("btc1sm").innerHTML = response[7].toFixed(2);
+      document.getElementById("btc2sm").innerHTML = dailyChange+"%";
+    }
+  }
+  };
+</script>
+    <!-- BTC SCRIPT (END) -->
+
+    <!-- ETH SCRIPT (START)-->
+<script>
+    var ww = new WebSocket("wss://api.bitfinex.com/ws");
+
+    ww.onopen = function() {
+      ww.send(JSON.stringify({
+        "event": "subscribe",
+        "channel": "ticker",
+        "pair":"ETHUSD",
+      }))
+    };
+
+    ww.onmessage = function(msg){
+      var response = JSON.parse(msg.data);
+      console.log(response);
+      var hb = response[1];
+      if(hb != "hb"){
+        var dailyChange = parseFloat(response[6]);
+        dailyChange = Number(Math.round(dailyChange*100+'e2')+'e-2')
+        console.log(dailyChange);
+        console.log(response);
+        if(dailyChange<0){
+        document.getElementById("eth1").innerHTML = response[7].toFixed(2);
+        document.getElementById("eth2").innerHTML = dailyChange+"%";
+        document.getElementById("eth2").style.color = "red";
+        document.getElementById("eth1lg").innerHTML = response[7].toFixed(2);
+        document.getElementById("eth2lg").innerHTML = dailyChange+"%";
+        document.getElementById("eth2lg").style.color = "red";
+        document.getElementById("eth1sm").innerHTML = response[7].toFixed(2);
+        document.getElementById("eth2sm").innerHTML = dailyChange+"%";
+        document.getElementById("eth2sm").style.color = "red";
+        }
+        else if(dailyChange>0){
+          document.getElementById("eth1").innerHTML = response[7].toFixed(2);
+          document.getElementById("eth2").innerHTML = dailyChange+"%";
+          document.getElementById("eth2").style.color = "green";
+          document.getElementById("eth1lg").innerHTML = response[7].toFixed(2);
+          document.getElementById("eth2lg").innerHTML = dailyChange+"%";
+          document.getElementById("eth2lg").style.color = "green";
+          document.getElementById("eth1sm").innerHTML = response[7].toFixed(2);
+          document.getElementById("eth2sm").innerHTML = dailyChange+"%";
+          document.getElementById("eth2sm").style.color = "green";
+        }
+        else{
+          document.getElementById("eth1").innerHTML = response[7].toFixed(2);
+          document.getElementById("eth2").innerHTML = dailyChange+"%";
+          document.getElementById("eth1lg").innerHTML = response[7].toFixed(2);
+          document.getElementById("eth2lg").innerHTML = dailyChange+"%";
+          document.getElementById("eth1sm").innerHTML = response[7].toFixed(2);
+          document.getElementById("eth2sm").innerHTML = dailyChange+"%";
+        }
+      }
+    };
+</script>
+    <!-- ETH SCRIPT (END) -->
+
+    <!-- NEO SCRIPT (START)-->
+<script>
+    var wwwww = new WebSocket("wss://api.bitfinex.com/ws");
+
+    wwwww.onopen = function() {
+      wwwww.send(JSON.stringify({
+        "event": "subscribe",
+        "channel": "ticker",
+        "pair":"NEOUSD",
+      }))
+    };
+
+    wwwww.onmessage = function(msg){
+      var response = JSON.parse(msg.data);
+      console.log(response);
+      var hb = response[1];
+      if(hb != "hb"){
+        var dailyChange = parseFloat(response[6]);
+        dailyChange = Number(Math.round(dailyChange*100+'e2')+'e-2')
+        console.log(dailyChange);
+        console.log(response);
+        if(dailyChange<0){
+        document.getElementById("neo1").innerHTML = response[7].toFixed(2);
+        document.getElementById("neo2").innerHTML = dailyChange+"%";
+        document.getElementById("neo2").style.color = "red";
+        document.getElementById("neo1lg").innerHTML = response[7].toFixed(2);
+        document.getElementById("neo2lg").innerHTML = dailyChange+"%";
+        document.getElementById("neo2lg").style.color = "red";
+        document.getElementById("neo1sm").innerHTML = response[7].toFixed(2);
+        document.getElementById("neo2sm").innerHTML = dailyChange+"%";
+        document.getElementById("neo2sm").style.color = "red";
+        }
+        else if(dailyChange>0){
+          document.getElementById("neo1").innerHTML = response[7].toFixed(2);
+          document.getElementById("neo2").innerHTML = dailyChange+"%";
+          document.getElementById("neo2").style.color = "green";
+          document.getElementById("neo1lg").innerHTML = response[7].toFixed(2);
+          document.getElementById("neo2lg").innerHTML = dailyChange+"%";
+          document.getElementById("neo2lg").style.color = "green";
+          document.getElementById("neo1sm").innerHTML = response[7].toFixed(2);
+          document.getElementById("neo2sm").innerHTML = dailyChange+"%";
+          document.getElementById("neo2sm").style.color = "green";
+        }
+        else{
+          document.getElementById("neo1").innerHTML = response[7].toFixed(2);
+          document.getElementById("neo2").innerHTML = dailyChange+"%";
+          document.getElementById("neo1lg").innerHTML = response[7].toFixed(2);
+          document.getElementById("neo2lg").innerHTML = dailyChange+"%";
+          document.getElementById("neo1sm").innerHTML = response[7].toFixed(2);
+          document.getElementById("neo2sm").innerHTML = dailyChange+"%";
+        }
+      }
+    };
+</script>
+    <!--NEO SCRIPT (END) -->
+<div class="jumbotron-xl">
+  <div class="modIntroContainer">
+  <div class="modIntroLeft">
+    <div class="modIntroLeftTop">
+      <div class="modIntroLeftTopFilter"></div>
+    </div>
+
+    <div class="modIntroLeftBottom">
+          <div class="modIntroLeftBottomText">
+       Decentralized freedom.
+    </div>
+    <div class="modIntroLeftBottomText">
+    </div>
+    </div>
+
+  </div><div class="modIntroRight">
+    <div class="modIntroRightTop">
+      <div class="modIntroRightTopTop"></div>
+        <div class="modIntroRightTopText">
+            <div class="clock">
+              <span  data-toggle="counter-up" id="countdown"></span><a>:</a>
+            </div><div class="clock">
+              <span  data-toggle="counter-up" id="countdown1"></span><a>:</a>
+            </div><div class="clock">
+              <span  data-toggle="counter-up" id="countdown2"></span><a>:</a>
+            </div><div class="clock">
+              <span  data-toggle="counter-up" id="countdown3"></span>
+            </div>
+          </div>
+        <div class="modIntroRightTopBottom"></div>
+    </div>
+    <div id="featured-services" class="modIntroRightBottom">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-4 box">
+              <img class = "btcicon" src = "/img/btcicon.svg"</img>
+              <h4 class="title"><a href="">BTC</a></h4>
+              <a id="btc1" style = 'color: #fff'></a> <a><span style = 'color: grey'> USD</span></a>
+              <a id="btc2"></a>
+            </div>
+
+            <div class="col-lg-4 box box-bg">
+              <img class = "ethicon" src = "/img/ethicon.svg"</img>
+              <h4 class="title"><a href="">ETH</a></h4>
+              <a id="eth1" style = 'color: #fff'></a> <a><span style = 'color: grey'> USD</span></a>
+              <a id="eth2"></a>
+            </div>
+
+            <div class="col-lg-4 box">
+              <img class = "neoicon" src = "/img/neoicon.svg"</img>
+              <h4 class="title"><a href="">NEO</a></h4>
+              <a id="neo1" style = 'color: #fff'></a> <a><span style = 'color: grey'> USD</span></a>
+              <a id="neo2"></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+</div></div>
+</div>
+<div class="jumbotron-lg">
+  <div class="modIntroContainerlg">
+    <div class="modIntroLeftlg">
+      <div class="modIntroLeftToplg">
+        <div class="modIntroLeftTopFilterlg"></div>
+      </div>
+
+      <div class="modIntroLeftBottomlg">
+            <div class="coinboxlg">
+              <img class = "btcicon" src = "/img/btcicon.svg"</img>
+              <h4 class="title"><a href="">BTC</a></h4>
+              <a id="btc1lg" style = 'color: #fff'></a> <a><span style = 'color: grey'> <br>USD</span></a>
+              <br><a id="btc2lg"></a>
+            </div>
+
+            <div class="coinboxlg">
+              <img class = "ethicon" src = "/img/ethicon.svg"</img>
+              <h4 class="title"><a href="">ETH</a></h4>
+              <a id="eth1lg" style = 'color: #fff'></a> <a><span style = 'color: grey'> <br>USD</span></a>
+              <br><a id="eth2lg"></a>
+            </div>
+
+            <div class="coinboxlg">
+              <img class = "neoicon" src = "/img/neoicon.svg"</img>
+              <h4 class="title"><a href="">NEO</a></h4>
+              <a id="neo1lg" style = 'color: #fff'></a> <a><span style = 'color: grey'> <br>USD</span></a>
+              <br><a id="neo2lg"></a>
+            </div>
+
+    </div></div><div class="modIntroRightlg">
+      <div class="modIntroRightToplg">
+        </div>
+      <div class="modIntroRightBottomlg">
+          <div class="modIntroRightTopTextlg">
+              <div class="clock">
+                <span  data-toggle="counter-up" id="countdownlg"></span><a>:</a>
+              </div><div class="clock">
+                <span  data-toggle="counter-up" id="countdown1lg"></span><a>:</a>
+              </div><div class="clock">
+                <span  data-toggle="counter-up" id="countdown2lg"></span><a>:</a>
+              </div><div class="clock">
+                <span  data-toggle="counter-up" id="countdown3lg"></span>
+              </div>
+            </div>
+      </div>
+  </div></div>
+</div>
+
+<div class="jumbotron-sm">
+  <div class="modIntroContainersm">
+    <div class="modIntro1sm">
+    </div>
+    <div class="modIntro2sm">
+    </div>
+    <div class="modIntro3sm">
+          <div class="clock">
+            <span  data-toggle="counter-up" id="countdownsm"></span><a>:</a>
+          </div><div class="clock">
+            <span  data-toggle="counter-up" id="countdown1sm"></span><a>:</a>
+          </div><div class="clock">
+            <span  data-toggle="counter-up" id="countdown2sm"></span><a>:</a>
+          </div><div class="clock">
+            <span  data-toggle="counter-up" id="countdown3sm"></span>
+          </div>
+        </div>
+    <div class="modIntro4sm">
+              <div class="coinboxsm">
+                <img class = "btcicon" src = "/img/btcicon.svg"</img>
+                <a id="btc1sm" style = 'color: #fff'></a> <a><span style = 'color: grey'> USD</span></a>
+                <a id="btc2sm"></a>
+              </div>
+
+              <div class="coinboxsm">
+                <img class = "ethicon" src = "/img/ethicon.svg"</img>
+                <a id="eth1sm" style = 'color: #fff'></a> <a><span style = 'color: grey'> USD</span></a>
+                <a id="eth2sm"></a>
+              </div>
+
+              <div class="coinboxsm">
+                <img class = "neoicon" src = "/img/neoicon.svg"</img>
+                <a id="neo1sm" style = 'color: #fff'></a> <a><span style = 'color: grey'> USD</span></a>
+                <a id="neo2sm"></a>
+              </div>
+    </div>
+  </div>
+</div>
+  <main id="main">
+
+    <!--==========================
+      Ripped from KNIGHT
+    ============================-->
+    <body1>
+      <section class="main-section" id="service">
+      		<!--main-section-start-->
+      		<div class="container">
+            <h1>Sign up for updates</h1>
+              <form method="POST" action="/suscribers/add">
+                  <label>Email</label>
+                    <input type="text" name="email">
+                    <input type ="submit" value="Submit">
+                    </form>
+                    <br></br>
+      			<div class="row">
+      				<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
+      					<div class="service-list">
+      						<div class="service-list-col1">
+      							<i class="fa-paw"></i>
+      						</div>
+      						<div class="service-list-col2">
+      							<h3>branding &amp; identity</h3>
+      							<p>Proin iaculis purus digni consequat sem digni ssim. Donec entum digni ssim.</p>
+      						</div>
+      					</div>
+      					<div class="service-list">
+      						<div class="service-list-col1">
+      							<i class="fa-gear"></i>
+      						</div>
+      						<div class="service-list-col2">
+      							<h3>web development</h3>
+      							<p>Proin iaculis purus consequat sem digni ssim. Digni ssim porttitora .</p>
+      						</div>
+      					</div>
+      					<div class="service-list">
+      						<div class="service-list-col1">
+      							<i class="fa-apple"></i>
+      						</div>
+      						<div class="service-list-col2">
+      							<h3>mobile design</h3>
+      							<p>Proin iaculis purus consequat digni sem digni ssim. Purus donec porttitora entum.</p>
+      						</div>
+      					</div>
+      					<div class="service-list">
+      						<div class="service-list-col1">
+      							<i class="fa-medkit"></i>
+      						</div>
+      						<div class="service-list-col2">
+      							<h3>24/7 Support</h3>
+      							<p>Proin iaculis purus consequat sem digni ssim. Sem porttitora entum.</p>
+      						</div>
+      					</div>
+      				</div>
+      				<figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
+      					<img src="img/favicon.png" alt="">
+      				</figure>
+
+      			</div>
+      		</div>
+      	</section>
+      	<!--main-section-end-->
+          <section class="main-section alabaster">
+      		<!--main-section alabaster-start-->
+      		<div class="container">
+      			<div class="row">
+      				<figure class="col-lg-5 col-sm-4 wow fadeInLeft">
+      					<img src="img/iphone.png" alt="">
+      				</figure>
+      				<div class="col-lg-7 col-sm-8 featured-work">
+      					<h2>featured work</h2>
+      					<P class="padding-b">Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit.</P>
+      					<div class="featured-box">
+      						<div class="featured-box-col1 wow fadeInRight delay-02s">
+      							<i class="fa-magic"></i>
+      						</div>
+      						<div class="featured-box-col2 wow fadeInRight delay-02s">
+      							<h3>magic of theme development</h3>
+      							<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. </p>
+      						</div>
+      					</div>
+      					<div class="featured-box">
+      						<div class="featured-box-col1 wow fadeInRight delay-04s">
+      							<i class="fa-gift"></i>
+      						</div>
+      						<div class="featured-box-col2 wow fadeInRight delay-04s">
+      							<h3>neatly packaged</h3>
+      							<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. </p>
+      						</div>
+      					</div>
+      					<div class="featured-box">
+      						<div class="featured-box-col1 wow fadeInRight delay-06s">
+      							<i class="fa-dashboard"></i>
+      						</div>
+      						<div class="featured-box-col2 wow fadeInRight delay-06s">
+      							<h3>SEO optimized</h3>
+      							<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. </p>
+      						</div>
+      					</div>
+      					<a class="Learn-More" href="#">Learn More</a>
+      				</div>
+      			</div>
+      		</div>
+      	</section>
+      	<!--main-section alabaster-end-->
+  </body1>
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>About Us</h3>
+          <p>Sweat Tokens power the Tingle platform, it is the currency in which transaction fees and system fees are paid and redistributed to Tingle owners.</p>
+        </header>
+
+        <div class="row about-cols">
+
+          <div class="col-md-4 wow fadeInUp">
+            <div class="about-col">
+              <div class="img">
+                <img src="img/about-mission.jpg" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#">Fastest DEX ever</a></h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="about-col">
+              <div class="img">
+                <img src="img/about-plan.jpg" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-list-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#">Dedicated roadmap</a></h2>
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="about-col">
+              <div class="img">
+                <img src="img/about-vision.jpg" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#">Our Vision</a></h2>
+              <p>
+                Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #about -->
+
+    <!--==========================
+      Services Section
+    ============================-->
+    <section id="services">
+      <div class="container">
+
+        <header class="section-header wow fadeInUp">
+          <h3>Services</h3>
+          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus. Ei ubique vivendum pro. At ius nisl accusam lorenta zanos paradigno tridexa panatarel.</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
+            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
+            <h4 class="title"><a href="">Dolor Sitema</a></h4>
+            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-paper-outline"></i></div>
+            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+            <h4 class="title"><a href="">Magni Dolores</a></h4>
+            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
+            <h4 class="title"><a href="">Nemo Enim</a></h4>
+            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-people-outline"></i></div>
+            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #services -->
+
+    <!--==========================
+      Call To Action Section
+    ============================-->
+    <section id="call-to-action" class="wow fadeIn">
+      <div class="container text-center">
+        <h3>Call To Action</h3>
+        <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <a class="cta-btn" href="#">Call To Action</a>
+      </div>
+    </section><!-- #call-to-action -->
+
+    <!--==========================
+      Skills Section
+    ============================-->
+    <section id="skills">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Why NEO?</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+        </header>
+
+        <div class="skills-content">
+
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">NEO <i class="val">10,000 Transactions per second</i></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">Ethereum <i class="val">2,000 Transactions per second</i></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">Bitcoin <i class="val">10 Transactions per second</i></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">Monero<i class="val">4 Transactions per second</i></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!--==========================
+      Facts Section
+    ============================-->
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Mar 14, 2018 15:37:25").getTime();
+
+    // Update the count down every 1 second
+  var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    //distance between now and countdown
+    var distance = countDownDate - now;
+
+    //calculations for , days, hours, minutes, seconds
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = days;
+    document.getElementById("countdown1").innerHTML = hours;
+    document.getElementById("countdown2").innerHTML = minutes;
+    document.getElementById("countdown3").innerHTML = seconds;
+
+    document.getElementById("countdownlg").innerHTML = days;
+    document.getElementById("countdown1lg").innerHTML = hours;
+    document.getElementById("countdown2lg").innerHTML = minutes;
+    document.getElementById("countdown3lg").innerHTML = seconds;
+
+    document.getElementById("countdownsm").innerHTML = days;
+    document.getElementById("countdown1sm").innerHTML = hours;
+    document.getElementById("countdown2sm").innerHTML = minutes;
+    document.getElementById("countdown3sm").innerHTML = seconds;
+
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown").innerHTML = "EXPIRED";
+      document.getElementById("countdownlg").innerHTML = "EXPIRED";
+      document.getElementById("countdownsm").innerHTML = "EXPIRED";
+    }
+
+  }, 1000);
+
+
+</script>
+
+
+
+
+
+    <section id="facts"  class="wow fadeIn">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Facts</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </header>
+
+        <div class="row counters">
+
+  				<div class="col-lg-3 col-6 text-center">
+            <span id="countdown"></span>
+            <p>Days Till Whitepaper</p>
+  				</div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span id="countdown1"></span>
+            <p>Hours</p>
+  				</div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span id="countdown2"></span>
+            <p>Minutes</p>
+  				</div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span id="countdown3"></span>
+            <p>Seconds</p>
+  				</div>
+
+  			</div>
+
+        <div class="facts-img">
+          <img src="img/facts-img.png" alt="" class="img-fluid">
+        </div>
+
+      </div>
+    </section><!-- #facts -->
+
+    <!--==========================
+      Portfolio Section
+    ============================-->
+    <section id="portfolio"  class="section-bg" >
+      <div class="container">
+
+        <header class="section-header">
+          <h3 class="section-title">Our Portfolio</h3>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="img/portfolio/app1.jpg" class="img-fluid" alt="">
+                <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">App 1</a></h4>
+                <p>App</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="img/portfolio/web3.jpg" class="img-fluid" alt="">
+                <a href="img/portfolio/web3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 3" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Web 3</a></h4>
+                <p>Web</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="img/portfolio/app2.jpg" class="img-fluid" alt="">
+                <a href="img/portfolio/app2.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">App 2</a></h4>
+                <p>App</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="img/portfolio/card2.jpg" class="img-fluid" alt="">
+                <a href="img/portfolio/card2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Card 2</a></h4>
+                <p>Card</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="img/portfolio/web2.jpg" class="img-fluid" alt="">
+                <a href="img/portfolio/web2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Web 2</a></h4>
+                <p>Web</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="img/portfolio/app3.jpg" class="img-fluid" alt="">
+                <a href="img/portfolio/app3.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">App 3</a></h4>
+                <p>App</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="img/portfolio/card1.jpg" class="img-fluid" alt="">
+                <a href="img/portfolio/card1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 1" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Card 1</a></h4>
+                <p>Card</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="img/portfolio/card3.jpg" class="img-fluid" alt="">
+                <a href="img/portfolio/card3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Card 3</a></h4>
+                <p>Card</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="img/portfolio/web1.jpg" class="img-fluid" alt="">
+                <a href="img/portfolio/web1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Web 1</a></h4>
+                <p>Web</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #portfolio -->
+
+    <!--==========================
+      Clients Section
+    ============================-->
+    <section id="clients" class="wow fadeInUp">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Our Clients</h3>
+        </header>
+
+        <div class="owl-carousel clients-carousel">
+          <img src="img/clients/client-1.png" alt="">
+          <img src="img/clients/client-2.png" alt="">
+          <img src="img/clients/client-3.png" alt="">
+          <img src="img/clients/client-4.png" alt="">
+          <img src="img/clients/client-5.png" alt="">
+          <img src="img/clients/client-6.png" alt="">
+          <img src="img/clients/client-7.png" alt="">
+          <img src="img/clients/client-8.png" alt="">
+        </div>
+
+      </div>
+    </section><!-- #clients -->
+
+    <!--==========================
+      Contact Section
+    ============================-->
+    <section id="contact" class="section-bg wow fadeInUp">
+      <div class="container">
+
+        <div class="section-header">
+          <h3>Contact Us</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
+
+        <div class="row contact-info">
+
+          <div class="col-md-4">
+            <div class="contact-address">
+              <i class="ion-ios-location-outline"></i>
+              <h3>Address</h3>
+              <address>A108 Adam Street, NY 535022, USA</address>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-phone">
+              <i class="ion-ios-telephone-outline"></i>
+              <h3>Phone Number</h3>
+              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-email">
+              <i class="ion-ios-email-outline"></i>
+              <h3>Email</h3>
+              <p><a href="mailto:info@example.com">info@example.com</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form">
+          <div id="sendmessage">Your message has been sent. Thank you!</div>
+          <div id="errormessage"></div>
+          <form action="" method="post" role="form" class="contactForm">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group col-md-6">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+              <div class="validation"></div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+
+      </div>
+    </section><!-- #contact -->
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>BizPage</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit"  value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+        -->
+        Best <a href="https://bootstrapmade.com/">Bootstrap Templates</a> by BootstrapMade
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/superfish/hoverIntent.js"></script>
+  <script src="lib/superfish/superfish.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+@media (min-width: 1024px){
+  #header #logo {
+    padding-left: 60px;
+    padding-top: 8px;
+  }
+  #nav-menu-container {
+    padding-right: 60px;
+    padding-top: 8px;
+  }
+  #intro p {
+    width: 60%;
+  }
+  #intro .carousel-control-prev, #intro .carousel-control-next {
+    width: 5%;
+  }
+}

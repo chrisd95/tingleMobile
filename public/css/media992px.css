@@ -1,0 +1,30 @@
+/*Default jumbotron display*/
+.jumbotron-xl{
+  display:none;
+}
+.jumbotron-lg{
+  display:none;
+}
+.jumbotron-sm{
+  display:none;
+}
+/*Jumbotron styling for screen more than 1125px (xl)*/
+@media only screen and (min-width: 1125px){
+  .jumbotron-xl{
+    display:block;
+  }
+}
+
+/*Jumbotron styling for screen more than 576px (lg)*/
+@media (max-width: 1125px) and (min-width: 576px){
+  .jumbotron-lg{
+    display:block;
+  }
+}
+
+/*Jumbotron styling for screen less than 576px (lg)*/
+@media only screen and (max-width: 576px) {
+  .jumbotron-sm{
+    display:block;
+  }
+}
