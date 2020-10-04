@@ -119,6 +119,7 @@ app.get('/', function(req, res){
 
 
 // pre-ICO GET (START)
+/*
 app.get('/pre-ico', function(req, res){
   //render db
   db.coins.find(function (err,docs){
@@ -133,7 +134,7 @@ app.get('/pre-ico', function(req, res){
   });
 });
 // pre-ICO GET (END)
-
+*/
 
 
 //GET own API (START)
