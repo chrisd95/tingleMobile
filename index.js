@@ -136,7 +136,7 @@ app.get('/pre-ico', function(req, res){
 // pre-ICO GET (END)
 */
 
-
+/*
 //GET own API (START)
 var getbtcticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/bitcoin',
   function(error,response, body) {
@@ -250,7 +250,7 @@ var interval = setInterval(geteosticker, 6000)
 
 //GET own API (END)
 
-
+*/
 // Catch suscribers (START)
 app.post('/suscribers/add', function(req,res){
   //validator for email (END)
@@ -291,7 +291,7 @@ db.mycollection.findOne({
 });})
 */
 // Find individual coin (START)
-
+/*
 //LOCAL API COINS (START)
           //GET. ALL COINS API (START)
           app.get('/coins', function(req, res) {
@@ -324,6 +324,6 @@ db.mycollection.findOne({
               });
           });
           //GET. SINGLE API (END)
-
+*/
 
 //LOCAL API COINS (END)
