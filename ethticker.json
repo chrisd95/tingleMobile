@@ -1,1 +1,26 @@
-{"_id":"5a3d7f95f36d2805ea511214","id":"ethereum","name":"Ethereum","symbol":"ETH","rank":"2","price_usd":"180.037028138","price_btc":"0.02150528","24h_volume_usd":"5030060000.0","market_cap_usd":"19442305532.0","available_supply":"107990594.0","total_supply":"107990594.0","max_supply":null,"percent_change_1h":"0.17","percent_change_24h":"2.07","percent_change_7d":"5.85","last_updated":"1570079543"}
+<!DOCTYPE html>
+	<html>
+	  <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>Application Error</title>
+		<style media="screen">
+		  html,body,iframe {
+			margin: 0;
+			padding: 0;
+		  }
+		  html,body {
+			height: 100%;
+			overflow: hidden;
+		  }
+		  iframe {
+			width: 100%;
+			height: 100%;
+			border: 0;
+		  }
+		</style>
+	  </head>
+	  <body>
+		<iframe src="//www.herokucdn.com/error-pages/application-error.html"></iframe>
+	  </body>
+	</html>

@@ -1,1 +1,26 @@
-{"_id":"5a3daa87f36d2805ea512604","id":"eos","name":"EOS","symbol":"EOS","rank":"7","price_usd":"2.9992685219","price_btc":"0.00035826","24h_volume_usd":"830549000.0","market_cap_usd":"2802101094.0","available_supply":"934261495.0","total_supply":"1030961506.0","max_supply":"2779530283.0","percent_change_1h":"-0.03","percent_change_24h":"2.27","percent_change_7d":"4.18","last_updated":"1570079586"}
+<!DOCTYPE html>
+	<html>
+	  <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>Application Error</title>
+		<style media="screen">
+		  html,body,iframe {
+			margin: 0;
+			padding: 0;
+		  }
+		  html,body {
+			height: 100%;
+			overflow: hidden;
+		  }
+		  iframe {
+			width: 100%;
+			height: 100%;
+			border: 0;
+		  }
+		</style>
+	  </head>
+	  <body>
+		<iframe src="//www.herokucdn.com/error-pages/application-error.html"></iframe>
+	  </body>
+	</html>
