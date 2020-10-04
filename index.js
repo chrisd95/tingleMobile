@@ -137,7 +137,7 @@ app.get('/pre-ico', function(req, res){
 
 
 //GET own API (START)
-var getbtcticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/bitcoin',
+var getbtcticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/bitcoin',
   function(error,response, body) {
     var btcticker = (body);
     btctick = btcticker
@@ -147,7 +147,7 @@ var getbtcticker = function(){request.get('http://obscure-basin-05575.herokuapp.
 })};
 var interval = setInterval(getbtcticker, 6000)
 //
-var getethticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/ethereum',
+var getethticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/ethereum',
   function(error,response, body) {
     var ethticker = (body);
     ethtick = ethticker
@@ -157,7 +157,7 @@ var getethticker = function(){request.get('http://obscure-basin-05575.herokuapp.
 })};
 var interval = setInterval(getethticker, 6000)
 //
-var getbchticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/bitcoin-cash',
+var getbchticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/bitcoin-cash',
   function(error,response, body) {
     var bchticker = (body);
     bchtick = bchticker
@@ -167,7 +167,7 @@ var getbchticker = function(){request.get('http://obscure-basin-05575.herokuapp.
 })};
 var interval = setInterval(getbchticker, 6000)
 //
-var getxrpticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/ripple',
+var getxrpticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/ripple',
   function(error,response, body) {
     var xrpticker = (body);
     xrptick = xrpticker
@@ -177,7 +177,7 @@ var getxrpticker = function(){request.get('http://obscure-basin-05575.herokuapp.
 })};
 var interval = setInterval(getxrpticker, 6000)
 //
-var getltcticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/litecoin',
+var getltcticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/litecoin',
   function(error,response, body) {
     var ltcticker = (body);
     ltctick = ltcticker
@@ -187,7 +187,7 @@ var getltcticker = function(){request.get('http://obscure-basin-05575.herokuapp.
 })};
 var interval = setInterval(getltcticker, 6000)
 //
-var getadaticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/cardano',
+var getadaticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/cardano',
   function(error,response, body) {
     var adaticker = (body);
     adatick = adaticker
@@ -197,7 +197,7 @@ var getadaticker = function(){request.get('http://obscure-basin-05575.herokuapp.
 })};
 var interval = setInterval(getadaticker, 6000)
 //
-var getdashticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/dash',
+var getdashticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/dash',
   function(error,response, body) {
     var dashticker = (body);
     dashtick = dashticker
@@ -207,7 +207,7 @@ var getdashticker = function(){request.get('http://obscure-basin-05575.herokuapp
 })};
 var interval = setInterval(getdashticker, 6000)
 //
-var getmiotaticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/iota',
+var getmiotaticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/iota',
   function(error,response, body) {
     var miotaticker = (body);
     miotatick = miotaticker
@@ -217,7 +217,7 @@ var getmiotaticker = function(){request.get('http://obscure-basin-05575.herokuap
 })};
 var interval = setInterval(getmiotaticker, 6000)
 //
-var getxemticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/nem',
+var getxemticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/nem',
   function(error,response, body) {
     var xemticker = (body);
     xemtick = xemticker
@@ -227,7 +227,7 @@ var getxemticker = function(){request.get('http://obscure-basin-05575.herokuapp.
 })};
 var interval = setInterval(getxemticker, 6000)
 //
-var getbtgticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/bitcoin-gold',
+var getbtgticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/bitcoin-gold',
   function(error,response, body) {
     var btgticker = (body);
     btgtick = btgticker
@@ -237,7 +237,7 @@ var getbtgticker = function(){request.get('http://obscure-basin-05575.herokuapp.
 })};
 var interval = setInterval(getbtgticker, 6000)
 //
-var geteosticker = function(){request.get('http://obscure-basin-05575.herokuapp.com/coins/eos',
+var geteosticker = function(){request.get('https://obscure-basin-05575.herokuapp.com/coins/eos',
   function(error,response, body) {
     var eosticker = (body);
     eostick = eosticker
@@ -281,14 +281,13 @@ var errors = req.validationErrors();
 
 
 // Find individual coin (START)
-/*
 app.get('/', function(res, req){
 db.mycollection.findOne({
 	_id: mongojs.ObjectId('5a3d7f7cf36d2805ea5111fe')
 }, function(err, doc) {
   console.log(doc)
 });})
-*/
+
 // Find individual coin (START)
 
 //LOCAL API COINS (START)
