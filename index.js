@@ -281,13 +281,14 @@ var errors = req.validationErrors();
 
 
 // Find individual coin (START)
+/*
 app.get('/', function(res, req){
 db.mycollection.findOne({
 	_id: mongojs.ObjectId('5a3d7f7cf36d2805ea5111fe')
 }, function(err, doc) {
   console.log(doc)
 });})
-
+*/
 // Find individual coin (START)
 
 //LOCAL API COINS (START)
