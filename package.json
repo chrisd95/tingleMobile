@@ -1,11 +1,10 @@
-{
+{ "scripts": {
+   "start": "node index.js"
+},
   "name": "tingledex",
   "version": "1.0.0",
   "description": "tingleDEX design website",
   "main": "index.js",
-  "scripts": {
-   "start": "node index.js"
- },
   "author": "datachris95",
   "license": "ISC",
   "dependencies": {
